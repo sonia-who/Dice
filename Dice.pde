@@ -3,7 +3,7 @@ void setup()
     size(500, 500);  
     noLoop();
   }
-int numDice = 0;
+
 int numRolls = 1;
 int sum = 0;
 void draw(){
@@ -14,18 +14,17 @@ void draw(){
         for (int y = 10; y < 450; y+= 60) {
           Die die1 = new Die(x, y);
           die1.show();
-          numDice += 1;
+          
         }
     }
     fill(255, 255, 255);
     text("Sum of Dice: " + sum, 10, 495);  
-    text(":)", 246, 495);
-    text("Num of Dice: " + numDice, 400, 495);  
+    text(":)", 485, 495);
+    
 }
 void mousePressed(){
       redraw();
       sum = 0;
-      numDice = 0;
       numRolls++;
 }
   class Die //models one single dice cube
@@ -77,3 +76,5 @@ void mousePressed(){
        ellipse(myX + 40, myY + 40, 7, 7);
      }
 }
+
+
