@@ -6,6 +6,8 @@ void setup()
 
 int numRolls = 1;
 int sum = 0;
+int sumOnes = 0;
+int sumSixes = 0;
 void draw(){
      background(0);
      // background(200, 200, 200);
@@ -19,6 +21,8 @@ void draw(){
     }
     fill(255, 255, 255);
     text("Sum of Dice: " + sum, 10, 495);  
+    text("Sum of Ones: " + sumOnes, 160, 495);
+    text("Sum of Sixes: " + sumSixes, 320, 495);
     text(":)", 485, 495);
     
 }
@@ -26,6 +30,8 @@ void mousePressed(){
       redraw();
       sum = 0;
       numRolls++;
+      sumOnes = 0;
+      sumSixes = 0;
 }
   class Die //models one single dice cube
   {
@@ -47,10 +53,14 @@ void mousePressed(){
       void show()
       {
           fill(255, 255, 255);
+          strokeWeight(2);
+          stroke((int)(Math.random() * 256) + 1, (int)(Math.random() * 256) + 1, (int)(Math.random() * 256) + 1);
           rect(myX, myY, 50, 50, 10);
           fill(0);
+          noStroke();
           if (dieValue == 1) {            
             ellipse(myX + 25, myY + 25, 7, 7);
+            sumOnes++;
           } else if (dieValue == 2) {
             ellipse(myX + 10, myY + 40, 7, 7);
             ellipse(myX + 40, myY + 10, 7, 7);
@@ -67,6 +77,7 @@ void mousePressed(){
             fourEllipses();
             ellipse(myX + 10, myY + 25, 7, 7);
             ellipse(myX + 40, myY + 25, 7, 7);
+            sumSixes++;
           }
      }     
      void fourEllipses() {
@@ -76,5 +87,6 @@ void mousePressed(){
        ellipse(myX + 40, myY + 40, 7, 7);
      }
 }
+
 
 
